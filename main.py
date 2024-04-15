@@ -35,6 +35,16 @@ class TaskManager:
             for task in self.tasks:
                 status = "Completed" if task.completed else "Pending"
                 file.write(f"{task.description} - {status}\n")
+    
+    def write_completed_tasks(self, filename):
+        """
+        This method writes the list of tasks to a file for only the completed tasks
+        """
+        with open(filename, 'w') as file:
+            for task in self.tasks:
+                status = "Completed" if task.completed else "Pending"
+                if status == "Completed":
+                    file.write(f"{task.description} - {status}\n")
 
 def main():
     task_manager = TaskManager()
